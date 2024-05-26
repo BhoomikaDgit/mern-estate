@@ -7,7 +7,7 @@ import About from './pages/About';
 
 export default function App() {
   return <BrowserRouter>
-
+<header/>
   <Routes>
     <Route path="/" element={< Home/>}/>
     <Route path="/sign-in" element={< SignIn/>}/>
