@@ -1,8 +1,10 @@
 import { FaSearch } from "react-icons/fa";
 import {Link} from 'react-router-dom';
+import {useSelector} from "../components/AuthContext";
 // icons from font awsome
 
 export default function Header() {
+  const {currentUser}=useSelector(state=>state.user)
   return (
     <Header className="bg-slate-200 shadow-md">
       {/* change colour and within line */}
@@ -31,10 +33,17 @@ export default function Header() {
             <Link to='/'>
             <li className= "hidden sm:inline  text-slate-700 hover:underline">About</li>
             </Link>
-            <Link to='/sign-in'>
-            <li className= " text-slate-700 hover:underline">
-            SignIN</li>
-            </Link>
+
+            {/* sign in display in home page */}
+            <Link to='/profile'>
+            {currentUser ?  (
+<img className="rounded-full h-7 w-7  object-cover" src={currentUser.avatar} alt="profile"/>
+            ):(<li className= " text-slate-700 hover:underline">SignIN</li>
+         
+           
+            
+          ) }
+           </Link>
        
         </ul>
       </div>

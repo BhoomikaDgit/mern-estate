@@ -1,11 +1,11 @@
 import express from 'express';
-import { test } from '../controllers/user.controller.js';
+import { test,updateUser,deleteUser } from '../controllers/user.controller.js';
+import { verifyToken } from '../utills/verifyUser.js';
 
-app.listen(3000,()=>{
-    console.log('server is running on the port 3000!');
-});
+
 
 const router=express.Router();
-
-router.get('/test',test);
+router.get('/test',test);  
+router.post('/update/:id',verifyToken,updateUser)
+router.delete('/delete/:id',verifyToken,deleteUser)
 export default router;
